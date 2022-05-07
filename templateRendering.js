@@ -1,4 +1,4 @@
-import { makeOptions, renderTemplate, setActive, showPage } from "./Utility.js"
+import { makeOptions, renderTemplate, setActive, showPage } from "./utility.js"
 
 function renderMenuItems(evt) {
     const element = evt.target
