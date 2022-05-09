@@ -5,12 +5,13 @@ import {
     setActiveLink,
     adjustForMissingHash,
     loadTemplate, renderTemplate
-} from "./utils.js"
+} from "./utility.js"
 
-import {addHandler} from "./pages/navigate/navigate.js";
+//import {addHandler} from "./pages/navigate/navigate.js";
 
 window.addEventListener("load", async () => {
     const templateAbout = await loadTemplate("./pages/about/about.html")
+    const templatePerformance = await loadTemplate("./pages/performance/performance.html")
 
     const router = new Navigo("/", { hash: true });
     router
@@ -35,6 +36,9 @@ window.addEventListener("load", async () => {
         .on("/login", () => {
             renderTemplate(templateLogin, "content")
             //TODO: handle admin login
+        })
+        .on("/performance", ()=> {
+            renderTemplate(templatePerformance, "content")
         })
 });
 
