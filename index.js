@@ -9,6 +9,7 @@ import {
 
 import {setupReservationHandlers} from "./pages/reservation/reservation.js";
 //import {addHandler} from "./pages/navigate/navigate.js";
+import {getAllPerformancesOnMovie} from "./pages/performance/performance.js";
 
 window.addEventListener("load", async () => {
     const templateAbout = await loadTemplate("./pages/about/about.html")
@@ -43,6 +44,7 @@ window.addEventListener("load", async () => {
         })
         .on("/performance", ()=> {
             renderTemplate(templatePerformance, "content")
+            getAllPerformancesOnMovie(1)
         })
 });
 

@@ -109,3 +109,13 @@ export function encode(str) {
     str = str.replace(/'/g, "&#039;");
     return str;
 }
+
+export async function handleHttpErrors(res) {
+    if (!res.ok) {
+        const errorResponse = await res.json();
+        const error = new Error(errorResponse.message)
+        error.apiError = errorResponse
+        throw error
+    }
+    return res.json()
+}
