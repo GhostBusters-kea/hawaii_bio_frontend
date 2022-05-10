@@ -1,4 +1,27 @@
 <template>
 
+    <h2>Reservation page</h2>
+    <div class="myBox" style="width: 50%; height: 400px; overflow-y: scroll">
+
+        <h3>Get all reservations </h3>
+        <button id="btn-get-all-reservations" type="button" class="btn btn-primary" >
+            Get all reservations
+        </button>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Reservation Id</th>
+                <th>Reservation Created</th>
+                <th>Movie</th>
+                <th>Cinema Hall</th>
+                <th>Date of performance</th>
+                <th>Age Limit</th>
+                <th>Amount of tickets</th>
+                <th>Total price</th>
+            </tr>
+            </thead>
+            <tbody id="tbl-id-reservation"></tbody>
+        </table>
+    </div>
 
 </template>

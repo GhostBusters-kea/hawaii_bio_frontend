@@ -7,12 +7,13 @@ import {
     loadTemplate, renderTemplate
 } from "./utility.js"
 
+import {setupReservationHandlers} from "./pages/reservation/reservation.js";
 //import {addHandler} from "./pages/navigate/navigate.js";
 
 window.addEventListener("load", async () => {
     const templateAbout = await loadTemplate("./pages/about/about.html")
     const templatePerformance = await loadTemplate("./pages/performance/performance.html")
-
+    const templateReservations = await loadTemplate("./pages/reservation/reservation.html")
     const router = new Navigo("/", { hash: true });
     router
         .hooks({
@@ -29,9 +30,12 @@ window.addEventListener("load", async () => {
                 document.getElementById("selected-movies-id").innerText = match.params.id
             }
         })
-        .on("/reservations", () => {
+        .on("/reservations", (match) => {
             renderTemplate(templateReservations, "content")
-            loadJoke()
+            if (match){
+                setupReservationHandlers()
+            }
+
         })
         .on("/login", () => {
             renderTemplate(templateLogin, "content")
