@@ -3,23 +3,53 @@
     <h2>Reservation page</h2>
     <div class="myBox" style="width: 50%; height: 400px; overflow-y: scroll">
 
-        <h3>Get all reservations </h3>
+
+        <div class="form-group">
+            <label for="tbl-id-reservation">Reservation ID</label>
+            <input type="text" class="form-control" id="input-reservation-id">
+
+
+        </div>
+        <button id="btn-get-id-reservation" type="submit">Search</button>
+
         <button id="btn-get-all-reservations" type="button" class="btn btn-primary" >
             Get all reservations
         </button>
+
+        <h3>Reservations </h3>
+
         <table class="table">
             <thead>
             <tr>
-                <th>Reservation Id</th>
-                <th>Reservation Created</th>
-                <th>Movie</th>
-                <th>Cinema Hall</th>
-                <th>Date of performance</th>
-                <th>Age Limit</th>
-                <th>Amount of tickets</th>
-                <th>Total price</th>
+            <th>Reservation ID</th>
+            <th>Reservation Created</th>
+            <th>Movie</th>
+            <th>Cinema Hall</th>
+            <th>Date of performance</th>
+            <th>Age Limit</th>
+            <th>Amount of tickets</th>
+            <th>Total price</th>
             </tr>
             </thead>
+            <tbody>
+            <tr>
+                <td id="reservation-id"></td>
+                <td id="reservation-created"></td>
+                <td id="reservation-movie"></td>
+                <td id="reservation-cinema-hall"></td>
+                <td id="reservation-dateOfPerformance"></td>
+                <td id="reservation-ageLimit"></td>
+                <td id="reservation-amountOfTickets"></td>
+                <td id="reservation-totalPrice"></td>
+                <td>
+                    <button type="submit" style="display: none" id="update-reservation-btn">Update</button>
+                </td>
+                <td>
+                    <button type="submit" style="display: none" id="delete-reservation-btn" class="btn-1">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+
             <tbody id="tbl-id-reservation"></tbody>
         </table>
     </div>
