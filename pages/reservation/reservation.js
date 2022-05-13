@@ -225,11 +225,10 @@ function delete2 () {
 // }};
 
  export function viewTickets(){
-
-    const id = 1;
+    const id = document.getElementById("ticket-id").value;
     //const id = document.getElementById("ticket-id").value
     console.log(id)
-    fetch("http://localhost:8090/api/ticket/1")
+    fetch("http://localhost:8090/api/ticket/" + id)
         .then(res => res.json())
         .then(data => {
             console.log(data)
