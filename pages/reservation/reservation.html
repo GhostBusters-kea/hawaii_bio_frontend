@@ -12,9 +12,7 @@
         </div>
         <button id="btn-get-id-reservation" type="submit">Search</button>
 
-        <button id="btn-get-all-reservations" type="button" class="btn btn-primary" >
-            Get all reservations
-        </button>
+
 
         <h3>Reservations </h3>
 
@@ -32,17 +30,17 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td id="reservation-id"></td>
-                <td id="reservation-created"></td>
-                <td id="reservation-movie"></td>
-                <td id="reservation-cinema-hall"></td>
-                <td id="reservation-dateOfPerformance"></td>
-                <td id="reservation-ageLimit"></td>
-                <td id="reservation-amountOfTickets"></td>
-                <td id="reservation-totalPrice"></td>
+            <tr id="reservation-list">
+                <td id="reservation-id" class="reservation-body"></td>
+                <td id="reservation-created" class="reservation-body"></td>
+                <td id="reservation-movie" class="reservation-body"></td>
+                <td id="reservation-cinema-hall" class="reservation-body"></td>
+                <td id="reservation-dateOfPerformance" class="reservation-body"></td>
+                <td id="reservation-ageLimit" class="reservation-body"></td>
+                <td id="reservation-amountOfTickets" class="reservation-body"></td>
+                <td id="reservation-totalPrice" class="reservation-body"></td>
                 <td>
-                    <button type="submit" style="display: none" id="update-reservation-btn">Update</button>
+                    <button type="submit" style="display: none" id="update-reservation-btn" class="">Update</button>
                 </td>
                 <td>
                     <button type="submit" style="display: none" id="delete-reservation-btn" class="btn-1">Delete</button>
@@ -52,6 +50,72 @@
 
             <tbody id="tbl-id-reservation"></tbody>
         </table>
+    </div>
+<!--    <h3>GET TICKETS</h3>-->
+<!--    <div>-->
+<!--        <select name="movie-choice" id="movie">-->
+<!--            <option value="1">King Kong<option>-->
+<!--            <option value="2">Matrix<option>-->
+<!--            <option value="3">James Bond</option>-->
+<!--        </select>-->
+<!--        <select name="date-time" id="date-time">-->
+<!--            <option value="1">28-2<option>-->
+<!--            <option value="2">29-2<option>-->
+<!--            <option value="3">30-2</option>-->
+<!--        </select>-->
+<!--        <select name="ticket-type" id="ticket-type">-->
+<!--            <option value="1">ADULT</option>-->
+<!--            <option value="2">CHILD</option>-->
+<!--            <option value="3">STUDENT</option>-->
+<!--        </select>-->
+<!--        <label for="ticket-q">Amount of Tickets</label>-->
+<!--        <select name="ticket-q" id="ticket-q">-->
+<!--            <option value="1">1</option>-->
+<!--            <option value="2">2</option>-->
+<!--            <option value="3">3</option>-->
+<!--            <option value="4">4</option>-->
+<!--            <option value="5">5</option>-->
+<!--            <option value="6">6</option>-->
+<!--        </select>-->
+<!--        <select name="price" id="ticketPrice">-->
+<!--            <option value="1">200</option>-->
+<!--        </select>-->
+<!--        <p id="eee">eee</p>-->
+<!--        <button id="reserve-ticket" type="submit">Reserve Ticket</button>-->
+<!--    </div>-->
+
+    <div class="myBox" style="width: 50%; height: 400px; overflow-y: scroll">
+
+
+
+        <h3>Ticket</h3>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Movie Title</th>
+                <th>Hall</th>
+                <th>Date</th>
+                <th>Ticket Type</th>
+                <th>Length</th>
+                <th>Ticket Price</th>
+                <th>Age Limit</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td id="ticket-movie-title"></td>
+                <td id="hall">1</td>
+                <td id="ticket-date"></td>
+                <td id="ticket-view-type"></td>
+                <td id="ticket-length"></td>
+                <td id="ticket-price"></td>
+                <td id="age-limit"></td>
+            </tr>
+            </tbody>
+            <tbody id="tbl-id-ticket"></tbody>
+        </table>
+        <button type="submit" id="view-ticket-btn">Click to view ticket</button>
     </div>
 
 </template>
