@@ -7,7 +7,7 @@ import {
     loadTemplate, renderTemplate
 } from "./utility.js"
 
-import {setupReservationHandlers} from "./pages/reservation/reservation.js";
+import {setupReservationHandlers, viewTickets} from "./pages/reservation/reservation.js";
 //import {addHandler} from "./pages/navigate/navigate.js";
 import {getAllPerformancesOnMovie} from "./pages/performance/performance.js";
 
@@ -33,6 +33,7 @@ window.addEventListener("load", async () => {
         })
         .on("/reservations", (match) => {
             renderTemplate(templateReservations, "content")
+
             if (match){
                 setupReservationHandlers()
             }
