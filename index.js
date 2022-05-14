@@ -11,7 +11,7 @@ import {
 import {setupReservationHandlers, viewTickets} from "./pages/reservation/reservation.js";
 //import {addHandler} from "./pages/navigate/navigate.js";
 import {getAllPerformancesOnMovie} from "./pages/performance/performance.js";
-import { loadAllMovies } from "./pages/movie/movie.js";
+import { setupMovieHandlers } from "./pages/movie/movie.js";
 
 window.addEventListener("load", async () => {
     const templateAbout = await loadTemplate("./pages/about/about.html")
@@ -30,7 +30,7 @@ window.addEventListener("load", async () => {
         .on("/about", () => renderTemplate(templateAbout, "content"))
         .on( "/movie", () => {
             renderTemplate(templateMovie, "content")
-            loadAllMovies()
+            setupMovieHandlers()
 
         })
         .on("/reservations", (match) => {

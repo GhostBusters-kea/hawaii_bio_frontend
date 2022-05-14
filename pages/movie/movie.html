@@ -20,7 +20,24 @@
 
   <div class="flexbox-container">
     <div class="flexbox-item">
-      <h1 id="add-movie"></h1>
+      <h1 id="add-movie">Add new movie</h1>
+      <hr />
+      <form class="add-post-form">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" name="" id="title" />
+        <label for="category">Genre</label>
+        <input type="text" class="form-control" name="" id="category" />
+        <label for="length">Length</label>
+        <input type="text" class="form-control" name="" id="length" />
+        <label for="description">Description</label>
+        <input type="text" class="form-control" name="" id="description" />
+        <label for="age-limit">Age limit</label>
+        <input type="text" class="form-control" name="" id="age-limit" />
+        <hr />
+        <button id="btn-add-movie" type="submit" class="btn btn-primary">
+          Add movie
+        </button>
+      </form>
     </div>
   </div>
 </template>
