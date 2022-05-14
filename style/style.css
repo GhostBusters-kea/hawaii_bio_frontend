@@ -1,0 +1,15 @@
+
+.flexbox-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  
+}
+.flexbox-item {
+  
+
+  margin: 10px;
+  padding: 30px;
+  
+}
