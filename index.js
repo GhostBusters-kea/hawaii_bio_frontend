@@ -5,16 +5,19 @@ import {
     setActiveLink,
     adjustForMissingHash,
     loadTemplate, renderTemplate
+    
 } from "./utility.js"
 
 import {setupReservationHandlers, viewTickets} from "./pages/reservation/reservation.js";
 //import {addHandler} from "./pages/navigate/navigate.js";
 import {getAllPerformancesOnMovie} from "./pages/performance/performance.js";
+import { loadAllMovies } from "./pages/movie/movie.js";
 
 window.addEventListener("load", async () => {
     const templateAbout = await loadTemplate("./pages/about/about.html")
     const templatePerformance = await loadTemplate("./pages/performance/performance.html")
     const templateReservations = await loadTemplate("./pages/reservation/reservation.html")
+    const templateMovie = await loadTemplate("./pages/movie/movie.html")
     const router = new Navigo("/", { hash: true });
     router
         .hooks({
@@ -25,11 +28,10 @@ window.addEventListener("load", async () => {
         })
         .on("/", () => renderText("Home", "content"))
         .on("/about", () => renderTemplate(templateAbout, "content"))
-        .on( "/movies", (match) => {
-            renderTemplate(templateMovies, "content")
-            if (match.params) {
-                document.getElementById("selected-movies-id").innerText = match.params.id
-            }
+        .on( "/movie", () => {
+            renderTemplate(templateMovie, "content")
+            loadAllMovies()
+
         })
         .on("/reservations", (match) => {
             renderTemplate(templateReservations, "content")

@@ -1,5 +1,26 @@
 <template>
-  <h2>Movies</h2>
+  <div class="flexbox-container">
+    <div class="flexbox-item">
+      <h1>A list of the movies shown in the cinema</h1>
+      <hr />
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Movie title</th>
+            <th>Genre</th>
+            <th>Length (min.)</th>
+            <th>Description</th>
+            <th>Age limit</th>
+          </tr>
+        </thead>
+        <tbody id="movie-tbl-id"></tbody>
+      </table>
+    </div>
+  </div>
 
-  <p>Show af list of the movies in the cinema</p>
+  <div class="flexbox-container">
+    <div class="flexbox-item">
+      <h1 id="add-movie"></h1>
+    </div>
+  </div>
 </template>
