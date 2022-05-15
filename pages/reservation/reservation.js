@@ -200,7 +200,7 @@ function delete2 () {
 function createTicket() {
     console.log("hell")
     const addPostForm = document.querySelector(".create-ticket-form")
-    const id = "8"
+    const id = "7"
     console.log(id)
     const ticketTypeValue = "adult"
     console.log(ticketTypeValue);
@@ -208,7 +208,7 @@ function createTicket() {
     console.log(amountOfTicketsValue)
     const ticketPriceValue = "340"
     console.log(ticketPriceValue)
-    const performanceValue = "1"
+    const performanceValue = {id: 1}
     console.log(performanceValue)
     addPostForm.addEventListener("submit", (e) => {
 
@@ -224,7 +224,7 @@ function createTicket() {
                 ticketType: ticketTypeValue,
                 amountOfTickets: amountOfTicketsValue,
                 ticketPrice: ticketPriceValue,
-                performanceId: performanceValue,
+                performance: performanceValue,
             })
         })
             .then(res => res.json())
