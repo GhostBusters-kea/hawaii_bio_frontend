@@ -6,7 +6,7 @@ export function setupReservationHandlers(){
     document.getElementById("btn-get-id-reservation").onclick = getReservations;
     document.getElementById("delete-reservation-btn").onclick = delete2;
     document.getElementById("view-ticket-btn").onclick = viewTickets;
-    //document.getElementById("reserve-ticket").onclick = createTicket;
+    document.getElementById("create-ticket").onclick = createTicket;
 
 }
 
@@ -41,11 +41,11 @@ export function getReservations(){
         <tr>
             <td>${u.id}</td>
             <td>${u.reservationDate}</td>
-            <td>${u.ticketResponse.dateOfPerformance.movie.title}</td>
+            <td>${u.ticketResponse.performance.movie.title}</td>
             <td>1</td>
-            <td>${u.ticketResponse.dateOfPerformance.date}</td>
-            <td>${u.ticketResponse.dateOfPerformance.movie.ageLimit}</td>
-            <td>${u.ticketResponse.amountOfTickets}</td>
+            <td>${u.ticketResponse.performance.date}</td>
+            <td>${u.ticketResponse.performance.movie.ageLimit}</td>
+            <td>${u.amountOfTickets}</td>
             <td>${u.ticketResponse.ticketPrice}</td>
             
         </tr>    
@@ -65,11 +65,11 @@ else {
             .then(data => {
                 document.getElementById("reservation-id").innerText = (data.id);
                 document.getElementById("reservation-created").innerHTML = (data.reservationDate);
-                document.getElementById("reservation-movie").innerHTML = (data.ticketResponse.dateOfPerformance.movie.title);
+                document.getElementById("reservation-movie").innerHTML = (data.ticketResponse.performance.movie.title);
                 document.getElementById("reservation-cinema-hall").innerHTML = "1";
-                document.getElementById("reservation-dateOfPerformance").innerHTML = (data.ticketResponse.dateOfPerformance.date);
-                document.getElementById("reservation-ageLimit").innerHTML = (data.ticketResponse.dateOfPerformance.movie.ageLimit);
-                document.getElementById("reservation-amountOfTickets").innerHTML = (data.ticketResponse.amountOfTickets);
+                document.getElementById("reservation-dateOfPerformance").innerHTML = (data.ticketResponse.performance.date);
+                document.getElementById("reservation-ageLimit").innerHTML = (data.ticketResponse.performance.movie.ageLimit);
+                document.getElementById("reservation-amountOfTickets").innerHTML = (data.amountOfTickets);
                 document.getElementById("reservation-totalPrice").innerHTML = (data.ticketResponse.ticketPrice);
                 let btn = document.getElementById("update-reservation-btn");
                 btn.style.display = "block";
@@ -158,7 +158,7 @@ function delete2 () {
         console.log('error', err)
     }
 }
-
+//
 // function createTicket() {
 //     console.log("hell")
 //         const addPostForm = document.querySelector(".addPostForm")
@@ -194,6 +194,49 @@ function delete2 () {
 //         })
 //     }
 
+
+
+
+function createTicket() {
+    console.log("hell")
+    const addPostForm = document.querySelector(".create-ticket-form")
+    const id = "8"
+    console.log(id)
+    const ticketTypeValue = "adult"
+    console.log(ticketTypeValue);
+    const amountOfTicketsValue = "2"
+    console.log(amountOfTicketsValue)
+    const ticketPriceValue = "340"
+    console.log(ticketPriceValue)
+    const performanceValue = "1"
+    console.log(performanceValue)
+    addPostForm.addEventListener("submit", (e) => {
+
+        console.log("ere")
+        e.preventDefault();
+        fetch("http://localhost:8090/api/ticket/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                id: id,
+                ticketType: ticketTypeValue,
+                amountOfTickets: amountOfTicketsValue,
+                ticketPrice: ticketPriceValue,
+                performanceId: performanceValue,
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                const dataArr = [];
+                dataArr.push(data);
+                console.log("yaya")
+            })
+    })
+}
+
 //     function selectOption(){
 // const optionToChose = document.querySelectorAll("select")
 //     console.log(optionToChose)
@@ -225,6 +268,8 @@ function delete2 () {
 // }};
 
  export function viewTickets(){
+
+    document.getElementById("ticket-movie-image").innerText = "";
     const id = document.getElementById("ticket-id").value;
     //const id = document.getElementById("ticket-id").value
     console.log(id)
@@ -232,16 +277,27 @@ function delete2 () {
         .then(res => res.json())
         .then(data => {
             console.log(data)
-            document.getElementById("ticket-movie-title").innerHTML = (data.dateOfPerformance.movie.title);
+
+            let image = document.createElement("img");
+            image.src = data.performance.movie.imageUrl;
+            image.width = 350;
+            image.height = 350;
+            const block = document.getElementById("ticket-movie-image");
+            block.appendChild(image);
+
+            document.getElementById("ticket-movie-title").innerHTML = (data.performance.movie.title);
             document.getElementById("hall").innerHTML;
-            document.getElementById("ticket-date").innerHTML = (data.dateOfPerformance.date);
+            document.getElementById("ticket-date").innerHTML = (data.performance.date);
             document.getElementById("ticket-view-type").innerHTML = (data.ticketType);
-            document.getElementById("ticket-length").innerHTML = (data.dateOfPerformance.movie.length) + " hours";
+            document.getElementById("ticket-length").innerHTML = (data.performance.movie.length) + " minutes";
             document.getElementById("ticket-price").innerHTML = (data.ticketPrice);
-            document.getElementById("age-limit").innerHTML = (data.dateOfPerformance.movie.ageLimit);
+            document.getElementById("age-limit").innerHTML = (data.performance.movie.ageLimit);
+
 
         })
 
         .catch(err => console.log("OOOPPs: " + err))
         .finally(err => console.log("Done"))
 }
+
+
