@@ -1,7 +1,7 @@
 <template>
 
     <h2>Reservation page</h2>
-    <div class="myBox" style="width: 50%; height: 400px; overflow-y: scroll">
+    <div class="myBox" style="width: 100%; height: 400px; overflow-y: scroll">
 
 
         <div class="form-group">
@@ -84,15 +84,16 @@
 <!--        <button id="reserve-ticket" type="submit">Reserve Ticket</button>-->
 <!--    </div>-->
 
-    <div class="myBox" style="width: 50%; height: 400px; overflow-y: scroll">
+    <div class="myBox" style="width: 100%; height: 400px; overflow-y: scroll">
 
 
 
         <h3>Ticket</h3>
 
-        <table class="table">
+        <table class="table ticket">
             <thead>
-            <tr>
+            <tr id="test">
+                <th></th>
                 <th>Movie Title</th>
                 <th>Hall</th>
                 <th>Date</th>
@@ -104,6 +105,8 @@
             </thead>
             <tbody>
             <tr>
+                <label for="ticket-movie-image">Image</label>
+                <td id="ticket-movie-image"></td>
                 <td id="ticket-movie-title"></td>
                 <td id="hall">1</td>
                 <td id="ticket-date"></td>
@@ -115,7 +118,18 @@
             </tbody>
             <tbody id="tbl-id-ticket"></tbody>
         </table>
-        <input type="text" id="ticket-id" class="form-control">
+
+    </div>
+
+
+
+
+
+
+
+    <div>
+        <input type="text" id="ticket-id" class="form-control" placeholder="TYPE TICKET ID">
         <button type="submit" id="view-ticket-btn">Click to view ticket</button>
+        <form action="" class="create-ticket-form"><button type="submit" id="create-ticket" class="create">Create Ticket</button></form>
     </div>
 </template>
