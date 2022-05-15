@@ -1,27 +1,135 @@
 <template>
 
     <h2>Reservation page</h2>
-    <div class="myBox" style="width: 50%; height: 400px; overflow-y: scroll">
+    <div class="myBox" style="width: 100%; height: 400px; overflow-y: scroll">
 
-        <h3>Get all reservations </h3>
-        <button id="btn-get-all-reservations" type="button" class="btn btn-primary" >
-            Get all reservations
-        </button>
+
+        <div class="form-group">
+            <label for="tbl-id-reservation">Reservation ID</label>
+            <input type="text" class="form-control" id="input-reservation-id">
+
+
+        </div>
+        <button id="btn-get-id-reservation" type="submit">Search</button>
+
+
+
+        <h3>Reservations </h3>
+
         <table class="table">
             <thead>
             <tr>
-                <th>Reservation Id</th>
-                <th>Reservation Created</th>
-                <th>Movie</th>
-                <th>Cinema Hall</th>
-                <th>Date of performance</th>
-                <th>Age Limit</th>
-                <th>Amount of tickets</th>
-                <th>Total price</th>
+            <th>Reservation ID</th>
+            <th>Reservation Created</th>
+            <th>Movie</th>
+            <th>Cinema Hall</th>
+            <th>Date of performance</th>
+            <th>Age Limit</th>
+            <th>Amount of tickets</th>
+            <th>Total price</th>
             </tr>
             </thead>
+            <tbody>
+            <tr id="reservation-list">
+                <td id="reservation-id" class="reservation-body"></td>
+                <td id="reservation-created" class="reservation-body"></td>
+                <td id="reservation-movie" class="reservation-body"></td>
+                <td id="reservation-cinema-hall" class="reservation-body"></td>
+                <td id="reservation-dateOfPerformance" class="reservation-body"></td>
+                <td id="reservation-ageLimit" class="reservation-body"></td>
+                <td id="reservation-amountOfTickets" class="reservation-body"></td>
+                <td id="reservation-totalPrice" class="reservation-body"></td>
+                <td>
+                    <button type="submit" style="display: none" id="update-reservation-btn" class="">Update</button>
+                </td>
+                <td>
+                    <button type="submit" style="display: none" id="delete-reservation-btn" class="btn-1">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+
             <tbody id="tbl-id-reservation"></tbody>
         </table>
     </div>
+<!--    <h3>GET TICKETS</h3>-->
+<!--    <div>-->
+<!--        <select name="movie-choice" id="movie">-->
+<!--            <option value="1">King Kong<option>-->
+<!--            <option value="2">Matrix<option>-->
+<!--            <option value="3">James Bond</option>-->
+<!--        </select>-->
+<!--        <select name="date-time" id="date-time">-->
+<!--            <option value="1">28-2<option>-->
+<!--            <option value="2">29-2<option>-->
+<!--            <option value="3">30-2</option>-->
+<!--        </select>-->
+<!--        <select name="ticket-type" id="ticket-type">-->
+<!--            <option value="1">ADULT</option>-->
+<!--            <option value="2">CHILD</option>-->
+<!--            <option value="3">STUDENT</option>-->
+<!--        </select>-->
+<!--        <label for="ticket-q">Amount of Tickets</label>-->
+<!--        <select name="ticket-q" id="ticket-q">-->
+<!--            <option value="1">1</option>-->
+<!--            <option value="2">2</option>-->
+<!--            <option value="3">3</option>-->
+<!--            <option value="4">4</option>-->
+<!--            <option value="5">5</option>-->
+<!--            <option value="6">6</option>-->
+<!--        </select>-->
+<!--        <select name="price" id="ticketPrice">-->
+<!--            <option value="1">200</option>-->
+<!--        </select>-->
+<!--        <p id="eee">eee</p>-->
+<!--        <button id="reserve-ticket" type="submit">Reserve Ticket</button>-->
+<!--    </div>-->
 
+    <div class="myBox" style="width: 100%; height: 400px; overflow-y: scroll">
+
+
+
+        <h3>Ticket</h3>
+
+        <table class="table ticket">
+            <thead>
+            <tr id="test">
+                <th></th>
+                <th>Movie Title</th>
+                <th>Hall</th>
+                <th>Date</th>
+                <th>Ticket Type</th>
+                <th>Length</th>
+                <th>Ticket Price</th>
+                <th>Age Limit</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <label for="ticket-movie-image">Image</label>
+                <td id="ticket-movie-image"></td>
+                <td id="ticket-movie-title"></td>
+                <td id="hall">1</td>
+                <td id="ticket-date"></td>
+                <td id="ticket-view-type"></td>
+                <td id="ticket-length"></td>
+                <td id="ticket-price"></td>
+                <td id="age-limit"></td>
+            </tr>
+            </tbody>
+            <tbody id="tbl-id-ticket"></tbody>
+        </table>
+
+    </div>
+
+
+
+
+
+
+
+    <div>
+        <input type="text" id="ticket-id" class="form-control" placeholder="TYPE TICKET ID">
+        <button type="submit" id="view-ticket-btn">Click to view ticket</button>
+        <form action="" class="create-ticket-form"><button type="submit" id="create-ticket" class="create">Create Ticket</button></form>
+    </div>
 </template>
