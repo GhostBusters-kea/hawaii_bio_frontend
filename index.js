@@ -9,12 +9,14 @@ import {
 
 import {setupReservationHandlers} from "./pages/reservation/reservation.js";
 //import {addHandler} from "./pages/navigate/navigate.js";
-import {getAllPerformancesOnMovie} from "./pages/performance/performance.js";
+import {getAllPerformancesOnMovie, createImage} from "./pages/performance/performance.js";
+import {clicked, seatsReserved} from "./pages/CinemaHall/cinemaHall.js";
 
 window.addEventListener("load", async () => {
     const templateAbout = await loadTemplate("./pages/about/about.html")
     const templatePerformance = await loadTemplate("./pages/performance/performance.html")
     const templateReservations = await loadTemplate("./pages/reservation/reservation.html")
+    const templateCinemaHall = await loadTemplate("./pages/cinemaHall/cinemaHall.html")
     const router = new Navigo("/", { hash: true });
     router
         .hooks({
@@ -45,6 +47,13 @@ window.addEventListener("load", async () => {
         .on("/performance", ()=> {
             renderTemplate(templatePerformance, "content")
             getAllPerformancesOnMovie(1)
+            createImage()
+        })
+        .on("/cinemahall", ()=> {
+            renderTemplate(templateCinemaHall, "content")
+            clicked()
+            seatsReserved()
+
         })
 });
 

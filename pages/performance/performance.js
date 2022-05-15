@@ -18,3 +18,20 @@ export function getAllPerformancesOnMovie(movieid){
         })
         .catch(res => res.message)
 }
+
+export function createImage(id){
+
+    const img = document.createElement('img');
+    img.src =
+        'https://media.geeksforgeeks.org/wp-content/uploads/20190529122828/bs21.png';
+    document.getElementById('image').appendChild(img);
+    img.setAttribute(id, 1);
+
+    console.log(img.getAttribute(id))
+
+    document.getElementById("image").addEventListener("click", function(){
+        const id2 = document.getElementById("image").value
+
+        console.log(id)
+    })
+}
