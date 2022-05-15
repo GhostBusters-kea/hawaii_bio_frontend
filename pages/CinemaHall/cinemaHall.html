@@ -1,0 +1,143 @@
+<template>
+    <div class="seatStructure">
+        <center>
+            <table id="seatsBlock" class="check1">
+                <p id="notification"></p>
+                <tr>
+                    <td colspan="14"><div class="screen">SCREEN</div></td>
+                    <td rowspan="20">
+                        <div class="smallBox greenBox">Selected Seat</div> <br/>
+                        <div class="smallBox redBox">Reserved Seat</div><br/>
+                        <div class="smallBox emptyBox">Empty Seat</div><br/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td></td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>A</td>
+                    <td><input type="checkbox" class="checkbox" value="a1" id="A1"></td>
+                    <td><input type="checkbox" class="checkbox" value="a2" id="A2"></td>
+                    <td><input type="checkbox" class="checkbox" value="A3"></td>
+                    <td><input type="checkbox" class="checkbox" value="A4"></td>
+                    <td><input type="checkbox" class="checkbox" value="A5"></td>
+                    <td class="seatGap"></td>
+                    <td><input type="checkbox" class="checkbox" value="A6"></td>
+                    <td><input type="checkbox" class="checkbox" value="A7"></td>
+                    <td><input type="checkbox" class="checkbox" value="A8"></td>
+                    <td><input type="checkbox" class="checkbox" value="A9"></td>
+                    <td><input type="checkbox" class="checkbox" value="A10"></td>
+                    <td><input type="checkbox" class="checkbox" value="A11"></td>
+                    <td><input type="checkbox" class="checkbox" value="A12"></td>
+                </tr>
+
+                <tr>
+                    <td>B</td>
+                    <td><input type="checkbox" class="checkbox" value="B1"></td>
+                    <td><input type="checkbox" class="checkbox" value="B2"></td>
+                    <td><input type="checkbox" class="checkbox" value="B3"></td>
+                    <td><input type="checkbox" class="checkbox" value="B4"></td>
+                    <td><input type="checkbox" class="checkbox" value="B5"></td>
+                    <td></td>
+                    <td><input type="checkbox" class="checkbox" value="B6"></td>
+                    <td><input type="checkbox" class="checkbox" value="B7"></td>
+                    <td><input type="checkbox" class="checkbox" value="B8"></td>
+                    <td><input type="checkbox" class="checkbox" value="B9"></td>
+                    <td><input type="checkbox" class="checkbox" value="B10"></td>
+                    <td><input type="checkbox" class="checkbox" value="B11"></td>
+                    <td><input type="checkbox" class="checkbox" value="B12"></td>
+                </tr>
+
+                <tr>
+                    <td>C</td>
+                    <td><input type="checkbox" class="checkbox" value="C1"></td>
+                    <td><input type="checkbox" class="checkbox" value="C2"></td>
+                    <td><input type="checkbox" class="checkbox" value="C3"></td>
+                    <td><input type="checkbox" class="checkbox" value="C4"></td>
+                    <td><input type="checkbox" class="checkbox" value="C5"></td>
+                    <td></td>
+                    <td><input type="checkbox" class="checkbox" value="C6"></td>
+                    <td><input type="checkbox" class="checkbox" value="C7"></td>
+                    <td><input type="checkbox" class="checkbox" value="C8"></td>
+                    <td><input type="checkbox" class="checkbox" value="C9"></td>
+                    <td><input type="checkbox" class="checkbox" value="C10"></td>
+                    <td><input type="checkbox" class="checkbox" value="C11"></td>
+                    <td><input type="checkbox" class="checkbox" value="C12"></td>
+                </tr>
+
+                <tr>
+                    <td>D</td>
+                    <td><input type="checkbox" class="checkbox" value="D1"></td>
+                    <td><input type="checkbox" class="checkbox" value="D2"></td>
+                    <td><input type="checkbox" class="checkbox" value="D3"></td>
+                    <td><input type="checkbox" class="checkbox" value="D4"></td>
+                    <td><input type="checkbox" class="checkbox" value="D5"></td>
+                    <td></td>
+                    <td><input type="checkbox" class="checkbox" value="D6"></td>
+                    <td><input type="checkbox" class="checkbox" value="D7"></td>
+                    <td><input type="checkbox" class="checkbox" value="D8"></td>
+                    <td><input type="checkbox" class="checkbox" value="D9"></td>
+                    <td><input type="checkbox" class="checkbox" value="D10"></td>
+                    <td><input type="checkbox" class="checkbox" value="D11"></td>
+                    <td><input type="checkbox" class="checkbox" value="D12"></td>
+                </tr>
+
+                <tr>
+                    <td>E</td>
+                    <td><input type="checkbox" class="checkbox" value="E1"></td>
+                    <td><input type="checkbox" class="checkbox" value="E2"></td>
+                    <td><input type="checkbox" class="checkbox" value="E3"></td>
+                    <td><input type="checkbox" class="checkbox" value="E4"></td>
+                    <td><input type="checkbox" class="checkbox" value="E5"></td>
+                    <td></td>
+                    <td><input type="checkbox" class="checkbox" value="E6"></td>
+                    <td><input type="checkbox" class="checkbox" value="E7"></td>
+                    <td><input type="checkbox" class="checkbox" value="E8"></td>
+                    <td><input type="checkbox" class="checkbox" value="E9"></td>
+                    <td><input type="checkbox" class="checkbox" value="E10"></td>
+                    <td><input type="checkbox" class="checkbox" value="E11"></td>
+                    <td><input type="checkbox" class="checkbox" value="E12"></td>
+                </tr>
+            </table>
+
+
+            <br/><button type="submit" id="btn-checkbox">Confirm Selection</button>
+            <br/><button type="submit" id="btn-checkbox1">Confirm Selection</button>
+        </center>
+
+    </div>
+    <div class="print-values">
+        <p id="valuelist"></p>
+    </div>
+
+    <br/><br/>
+
+    <div class="displayerBoxes">
+        <center>
+            <table class="Displaytable">
+                <tr>
+                    <th>Number of Seats</th>
+                    <th>Seats</th>
+                </tr>
+                <tr>
+                    <td><textarea id="numberDisplay"></textarea></td>
+                    <td><textarea id="seatsDisplay"></textarea></td>
+                </tr>
+            </table>
+        </center>
+    </div>
+</template>
