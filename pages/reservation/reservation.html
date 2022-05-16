@@ -1,56 +1,6 @@
 <template>
 
-    <h2>Reservation page</h2>
-    <div class="myBox" style="width: 100%; height: 400px; overflow-y: scroll">
 
-
-        <div class="form-group">
-            <label for="tbl-id-reservation">Reservation ID</label>
-            <input type="text" class="form-control" id="input-reservation-id">
-
-
-        </div>
-        <button id="btn-get-id-reservation" type="submit">Search</button>
-
-
-
-        <h3>Reservations </h3>
-
-        <table class="table">
-            <thead>
-            <tr>
-            <th>Reservation ID</th>
-            <th>Reservation Created</th>
-            <th>Movie</th>
-            <th>Cinema Hall</th>
-            <th>Date of performance</th>
-            <th>Age Limit</th>
-            <th>Amount of tickets</th>
-            <th>Total price</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr id="reservation-list">
-                <td id="reservation-id" class="reservation-body"></td>
-                <td id="reservation-created" class="reservation-body"></td>
-                <td id="reservation-movie" class="reservation-body"></td>
-                <td id="reservation-cinema-hall" class="reservation-body"></td>
-                <td id="reservation-dateOfPerformance" class="reservation-body"></td>
-                <td id="reservation-ageLimit" class="reservation-body"></td>
-                <td id="reservation-amountOfTickets" class="reservation-body"></td>
-                <td id="reservation-totalPrice" class="reservation-body"></td>
-                <td>
-                    <button type="submit" style="display: none" id="update-reservation-btn" class="">Update</button>
-                </td>
-                <td>
-                    <button type="submit" style="display: none" id="delete-reservation-btn" class="btn-1">Delete</button>
-                </td>
-            </tr>
-            </tbody>
-
-            <tbody id="tbl-id-reservation"></tbody>
-        </table>
-    </div>
 <!--    <h3>GET TICKETS</h3>-->
 <!--    <div>-->
 <!--        <select name="movie-choice" id="movie">-->
@@ -87,7 +37,6 @@
     <div class="myBox" style="width: 100%; height: 400px; overflow-y: scroll">
 
 
-
         <h3>Ticket</h3>
 
         <table class="table ticket">
@@ -105,7 +54,6 @@
             </thead>
             <tbody>
             <tr>
-                <label for="ticket-movie-image">Image</label>
                 <td id="ticket-movie-image"></td>
                 <td id="ticket-movie-title"></td>
                 <td id="hall">1</td>
@@ -123,13 +71,75 @@
 
 
 
-
-
-
-
     <div>
+        <h3>RESERVE TICKET</h3>
+        <label for="quantity">Quantity</label>
+        <input type="number" id="quantity" name="quantity" min="1" max="30">
+        <label for="ticketTypeChoice">Ticket Type</label>
+        <input type="text" id="ticketTypeChoice" name="Ticket Type" placeholder="ADULT/CHILD">
+        <form action="" class="create-ticket-form"><button type="submit" id="create-ticket" class="create">Save Ticket</button></form>
+    </div>
+
+    <br><br><br><br><br>
+    <div>
+
         <input type="text" id="ticket-id" class="form-control" placeholder="TYPE TICKET ID">
         <button type="submit" id="view-ticket-btn">Click to view ticket</button>
-        <form action="" class="create-ticket-form"><button type="submit" id="create-ticket" class="create">Create Ticket</button></form>
+
     </div>
+
+
+
+    <h2>Reservation page</h2>
+    <div class="myBox" style="width: 100%; height: 400px; overflow-y: scroll">
+
+
+        <div class="form-group">
+            <label for="tbl-id-reservation">Reservation ID</label>
+            <input type="text" class="form-control" id="input-reservation-id">
+
+
+        </div>
+        <button id="btn-get-id-reservation" type="submit">Search</button>
+
+
+
+        <h3>Reservations </h3>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Reservation ID</th>
+                <th>Reservation Created</th>
+                <th>Movie</th>
+                <th>Cinema Hall</th>
+                <th>Date of performance</th>
+                <th>Age Limit</th>
+                <th>Amount of tickets</th>
+                <th>Total price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr id="reservation-list">
+                <td id="reservation-id" class="reservation-body"></td>
+                <td id="reservation-created" class="reservation-body"></td>
+                <td id="reservation-movie" class="reservation-body"></td>
+                <td id="reservation-cinema-hall" class="reservation-body"></td>
+                <td id="reservation-dateOfPerformance" class="reservation-body"></td>
+                <td id="reservation-ageLimit" class="reservation-body"></td>
+                <td id="reservation-amountOfTickets" class="reservation-body"></td>
+                <td id="reservation-totalPrice" class="reservation-body"></td>
+                <td>
+                    <button type="submit" style="display: none" id="update-reservation-btn" class="">Update</button>
+                </td>
+                <td>
+                    <button type="submit" style="display: none" id="delete-reservation-btn" class="btn-1">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+
+            <tbody id="tbl-id-reservation"></tbody>
+        </table>
+    </div>
+
 </template>
