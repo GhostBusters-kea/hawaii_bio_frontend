@@ -12,7 +12,7 @@ import {setupReservationHandlers, viewTickets} from "./pages/reservation/reserva
 //import {addHandler} from "./pages/navigate/navigate.js";
 import {getAllPerformancesOnMovie, createImage} from "./pages/performance/performance.js";
 import {clicked, seatsReserved} from "./pages/CinemaHall/cinemaHall.js";
-import { setupMovieHandlers } from "./pages/movie/movie.js";
+import {getParams, setupMovieHandlers} from "./pages/movie/movie.js";
 
 
 window.addEventListener("load", async () => {
@@ -50,10 +50,11 @@ window.addEventListener("load", async () => {
             renderTemplate(templateLogin, "content")
             //TODO: handle admin login
         })
-        .on("/performance", ()=> {
+        .on("/performance", (match)=> {
             renderTemplate(templatePerformance, "content")
-            getAllPerformancesOnMovie(1)
+            getAllPerformancesOnMovie(getParams(match))
             createImage()
+
         })
         .on("/cinemahall", ()=> {
             renderTemplate(templateCinemaHall, "content")

@@ -8,7 +8,7 @@ export function clicked(){
     document.getElementById("btn-checkbox").onclick = multipleCheckboxes;
     document.getElementById("btn-checkbox1").onclick = postMapp;
 }
-
+/*
 export function seatsReserved(){
     let array = [];
 
@@ -27,7 +27,9 @@ export function seatsReserved(){
 
 }
 
-/*
+ */
+
+
 export function seatsReserved(){
     let array = [];
 
@@ -49,8 +51,6 @@ export function seatsReserved(){
 
 }
 
- */
-
 function multipleCheckboxes(){
     var array = [];
 
@@ -64,11 +64,19 @@ function multipleCheckboxes(){
         }
     }
 
+    //Stringify the array to json
+    /*
+    var jsonString = JSON.stringify(array)
+    console.log(jsonString)
+     */
+
+
     if(array.length > 0){
         document.getElementById("numberDisplay").innerHTML = array.length
         document.getElementById("seatsDisplay").innerHTML = array.toString()
     }
-    //Skal bruges som array til at sende´alle sæder til database
+
+    //Skal bruges som array til at sende alle sæder til database
     for(var i = 0; i < array.length; i++) {
         if (array.length > 0) {
             const listOfChecked = array[i].toString()
@@ -77,22 +85,41 @@ function multipleCheckboxes(){
     }
 }
 
+/*
 function postMapp(){
-    let payload = {
-        a1: 0,
-        a2: 0
-    }
+    const value = 1
 
-    console.log(payload)
+    fetch("http://localhost:8090/api/cinemahall", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            id: 1,
+            a1: value,
+            a2: value,
+            seats: 30,
+            seatsReserved: 0
+        })
+    })
 
-    let option = {
-        method: "PUT",
-        headers: {"Content-type": "application/json",
-            "Accept": "application/json"},
-        body: JSON.stringify(payload)
-    }
-    console.log(option)
-    fetch (URL + "/api/cinemahall/1", option)
-        .then(res => res.json())
-        .catch(err => err.message)
+}
+
+ */
+
+function postMapp(){
+    const value = 1
+
+    fetch("http://localhost:8090/api/cinemahall", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            a1:1,
+            a2:1
+        })
+    }).then(data => console.log(data))
 }
