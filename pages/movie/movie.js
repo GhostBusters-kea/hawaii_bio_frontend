@@ -1,8 +1,10 @@
+
 const URL = "http://localhost:8090/api/movies/"
 
 export function setupMovieHandlers(){
     loadAllMovies();
     document.getElementById("btn-add-movie").onclick = addMovie;
+
 }
 
 function addMovie(){
@@ -44,19 +46,37 @@ function loadAllMovies(){
     .then(res=>res.json())
     .then(data=>{
         console.log(data)
-        const rows = data.map(u=>
-            ` 
-            <tr>
+        for(let i = 0; i < data.length; i++) {
+
+            const rows = data.map(u =>
+                ` 
+            <tr data-id=${u.id}>
+            <td>${u.id}</td>
             <td>${u.title}</td>
             <td>${u.category}</td>
             <td>${u.length}</td>
             <td>${u.description}</td>
             <td>${u.ageLimit}</td>
+            <td><a id="test" class="">Reserve</a></td>
             </tr>
-            `            
+            `
             ).join("\n")
-            document.getElementById("movie-tbl-id").innerHTML=rows;
+            document.getElementById("movie-tbl-id").innerHTML = rows;
+
+            for (let i = 0; i < data.length; i++) {
+                let test = document.getElementById("test")
+                test.setAttribute("href", "#/performance?id=" + data[i].id)
+                test.id += i
+            }
+        }
     })
     .catch(err => console.log("Error: " +  err))
     .finally(err => console.log("Done"));
+
+}
+
+export function getParams(match){
+    const movieId = match?.params?.id
+    console.log(movieId)
+    return movieId
 }
