@@ -18,20 +18,51 @@ export function getAllPerformancesOnMovie(movieid){
         })
         .catch(res => res.message)
 }
+//
+// export function createImage(id){
+//
+//     const img = document.createElement('img');
+//     img.src =
+//         'https://media.geeksforgeeks.org/wp-content/uploads/20190529122828/bs21.png';
+//     document.getElementById('image').appendChild(img);
+//     img.setAttribute(id, 1);
+//
+//     console.log(img.getAttribute(id))
+//
+//     document.getElementById("image").addEventListener("click", function(){
+//         const id2 = document.getElementById("image").value
+//
+//         console.log(id)
+//     })
+// }
 
-export function createImage(id){
+export function loadAllPerformances(movieid){
+    fetch(URL + "/api/performance/" + movieid)
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+            for(let i = 0; i < data.length; i++) {
 
-    const img = document.createElement('img');
-    img.src =
-        'https://media.geeksforgeeks.org/wp-content/uploads/20190529122828/bs21.png';
-    document.getElementById('image').appendChild(img);
-    img.setAttribute(id, 1);
+                const rows = data.map(u =>
+                    ` 
+            <tr data-id=${u.id}>
+            <td>${u.id}</td>
+            <td>${u.date}</td>
+            
+            <td><a id="test-performance" class="">Click</a></td>
+            </tr>
+            `
+                ).join("\n")
+                document.getElementById("performance-tbl-id").innerHTML = rows;
 
-    console.log(img.getAttribute(id))
+                for (let i = 0; i < data.length; i++) {
+                    let test = document.getElementById("test-performance")
+                    test.setAttribute("href", "#/reservations?id=" + data[i].id)
+                    test.id += i
+                }
+            }
+        })
+        .catch(err => console.log("Error: " +  err))
+        .finally(err => console.log("Done"));
 
-    document.getElementById("image").addEventListener("click", function(){
-        const id2 = document.getElementById("image").value
-
-        console.log(id)
-    })
 }

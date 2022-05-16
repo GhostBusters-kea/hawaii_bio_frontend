@@ -1,15 +1,52 @@
 <template>
-    <div>
-        <h3>Vælg dag og tid</h3>
-        <select id="performanceList">
-            <option value="" disabled selected>Vælg dag</option>
-            <option value="" id="performanceOption" disabled selected></option>
-        </select>
-        <a href="#/reservations"><button type="submit">Submit</button> </a>
+<!--    <div>-->
+<!--        <h3>Vælg dag og tid</h3>-->
+
+<!--        <select id="performanceList">-->
+<!--            <option value="" disabled selected>Vælg dag</option>-->
+<!--            <option value="" id="performanceOption" disabled selected></option>-->
+<!--        </select>-->
+<!--        <a id="performance-send">click me</a>-->
+<!--    </div>-->
+
+<!--    <div class="container__image" id="image">-->
+
+<!--    </div>-->
+
+
+<!--    <div id="performance-choices">-->
+
+<!--        <h3>VÆLG PERFORMANCE</h3>-->
+
+<!--        <div id="div1" class="performance-choice">object1</div>-->
+<!--        <div id ="div2" class="performance-choice">object2</div>-->
+<!--        <div id="div3" class="performance-choice">object3</div>-->
+<!--        <div id="div4" class="performance-choice">object4</div>-->
+<!--        <div id="div5" class="performance-choice">object5</div>-->
+<!--        <div id="div6" class="performance-choice">object6</div>-->
+
+<!--        <button id="send-performance-btn"></button>-->
+<!--    </div>-->
+
+
+
+    <div class="flexbox-container">
+        <div class="flexbox-item">
+            <h1>Pick a time</h1>
+            <hr />
+            <table class="table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+
+                </tr>
+                </thead>
+                <tbody id="performance-tbl-id" class="performance-tr"></tbody>
+            </table>
+        </div>
     </div>
 
-    <div class="container__image" id="image">
-
-    </div>
 
 </template>
