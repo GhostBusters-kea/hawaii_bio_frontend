@@ -6,7 +6,7 @@ const URL = apiRoot;
 
 export function clicked(){
     document.getElementById("btn-checkbox").onclick = multipleCheckboxes;
-    document.getElementById("btn-checkbox1").onclick = postMapp;
+    document.getElementById("btn-checkbox1").onclick = getBoxed;
 }
 /*
 export function seatsReserved(){
@@ -33,17 +33,14 @@ export function seatsReserved(){
 export function seatsReserved(){
     let array = [];
 
-    var chks1 = document.getElementById("A1")
-    var chks2 = document.getElementById("A2")
     fetch(URL + "/api/cinemahall/" + 1)
         .then(res => handleHttpErrors(res))
         .then(data => {
             console.log(data)
             array.push(data);
-            if (data.a1 == 1 || data.a2 == 1){
+            if (data.seat){
                 chks1.checked = true
                 chks2.checked = true
-                console.log(chks1, chks2)
             }else{
                 console.log("not found")
             }
@@ -85,41 +82,54 @@ function multipleCheckboxes(){
     }
 }
 
+
+function getBoxed(){
+
+    let tblSeat = document.getElementById("seatsBlock");
+
+    let chks = tblSeat.getElementsByTagName("INPUT")
+
+    for(let i = 0; i < chks.length; i++){
+        if(chks[i].checked){
+            const chId = chks[i].id
+            console.log(chId)
+            const chValue = chks[i].value = 1
+            console.log(chValue)
+
+                fetch("http://localhost:8090/api/seat/" + chId, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify({
+                        id : chId,
+                        isReserved: chValue
+                    })
+                })
+                    .then(data => {
+                        chks.checked = true
+                    })
+        }
+    }
+}
+
 /*
-function postMapp(){
-    const value = 1
+export function helloKitty(){
+    console.log("helo")
+    let tblSeat = document.getElementById("seatsBlock");
 
-    fetch("http://localhost:8090/api/cinemahall", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        body: JSON.stringify({
-            id: 1,
-            a1: value,
-            a2: value,
-            seats: 30,
-            seatsReserved: 0
+    let chks = tblSeat.getElementsByTagName("INPUT")
+
+    for(let i = 0; i < chks.length; i++){
+        const chId = chks[i].id
+        fetch("http://localhost:8090/api/seat/" + chId, data => {
+            console.log(data)
+            if(data.isReserved.value == 1){
+                chks.id.checked = true
+            }
         })
-    })
-
+    }
 }
 
  */
-
-function postMapp(){
-    const value = 1
-
-    fetch("http://localhost:8090/api/cinemahall", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        body: JSON.stringify({
-            a1:1,
-            a2:1
-        })
-    }).then(data => console.log(data))
-}

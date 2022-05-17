@@ -9,8 +9,8 @@ import {
 } from "./utility.js"
 
 import {setupReservationHandlers, viewTickets} from "./pages/reservation/reservation.js";
-import {getAllPerformancesOnMovie, createImage} from "./pages/performance/performance.js";
-import {clicked, seatsReserved} from "./pages/CinemaHall/cinemaHall.js";
+import {getAllPerformancesOnMovie, loadAllPerformances} from "./pages/performance/performance.js";
+import {clicked} from "./pages/CinemaHall/cinemaHall.js";
 import {getParams, setupMovieHandlers} from "./pages/movie/movie.js";
 import { setupLoginHandlers } from "./pages/login/login.js"
 
@@ -54,13 +54,13 @@ window.addEventListener("load", async () => {
         .on("/performance", (match)=> {
             renderTemplate(templatePerformance, "content")
             getAllPerformancesOnMovie(getParams(match))
-            createImage()
+            loadAllPerformances(getParams(match))
+
 
         })
         .on("/cinemahall", ()=> {
             renderTemplate(templateCinemaHall, "content")
             clicked()
-            seatsReserved()
 
         })
 });
