@@ -103,7 +103,7 @@ input[type=checkbox]:before {
 input[type=checkbox]:checked:before {
     background-color:Green;
     font-size: 15px;
-
+}
 
 .flexbox-container{
   display: flex;
@@ -112,6 +112,7 @@ input[type=checkbox]:checked:before {
   align-content: center;
   
 }
+
 .flexbox-item {
   
 
