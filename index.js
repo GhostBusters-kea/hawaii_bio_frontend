@@ -9,17 +9,17 @@ import {
 } from "./utility.js"
 
 import {setupReservationHandlers, viewTickets} from "./pages/reservation/reservation.js";
-//import {addHandler} from "./pages/navigate/navigate.js";
 import {getAllPerformancesOnMovie, loadAllPerformances} from "./pages/performance/performance.js";
 import {clicked} from "./pages/CinemaHall/cinemaHall.js";
 import {getParams, setupMovieHandlers} from "./pages/movie/movie.js";
+import { setupLoginHandlers } from "./pages/login/login.js"
 
 
 window.addEventListener("load", async () => {
     const templateAbout = await loadTemplate("./pages/about/about.html")
     const templatePerformance = await loadTemplate("./pages/performance/performance.html")
     const templateReservations = await loadTemplate("./pages/reservation/reservation.html")
-
+    const templateLogin = await loadTemplate("./pages/login/login.html")
     const templateCinemaHall = await loadTemplate("./pages/cinemaHall/cinemaHall.html")
     const templateMovie = await loadTemplate("./pages/movie/movie.html")
 
@@ -48,6 +48,7 @@ window.addEventListener("load", async () => {
         })
         .on("/login", () => {
             renderTemplate(templateLogin, "content")
+            setupLoginHandlers()
             //TODO: handle admin login
         })
         .on("/performance", (match)=> {

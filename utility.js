@@ -119,3 +119,4 @@ export async function handleHttpErrors(res) {
     }
     return res.json()
 }
+
