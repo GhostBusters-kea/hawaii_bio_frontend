@@ -1,11 +1,11 @@
 import {apiRoot} from "../../settings.js";
 import {handleHttpErrors} from "../../utility.js";
 
-const URL = apiRoot
+const URL = apiRoot + "performance/"
 
 //Der skal bruges et movieid når man vælger en film. Før jeg kan få de rigtige datoer
 export function getAllPerformancesOnMovie(movieid){
-    fetch(URL + "/api/performance/" + movieid)
+    fetch(URL + movieid)
         .then(res => handleHttpErrors(res))
         .then(performances1 => {
             const performanceList = document.getElementById("performanceList")
@@ -37,7 +37,7 @@ export function getAllPerformancesOnMovie(movieid){
 // }
 
 export function loadAllPerformances(movieid){
-    fetch(URL + "/api/performance/" + movieid)
+    fetch(URL + movieid)
         .then(res=>res.json())
         .then(data=>{
             console.log(data)

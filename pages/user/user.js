@@ -1,6 +1,8 @@
-import {handleHttpErrors, makeOptions} from "../../utility.js";
+import {handleHttpErrors} from "../../utility.js";
+import {apiRoot} from "../../settings";
+import {makeOptions} from "../../fetchUtils";
 
-const URL = "http://localhost:8090/api/"
+const URL = apiRoot + "users"
 
 export async function handleUsers(){
     await getUsers()
@@ -8,7 +10,7 @@ export async function handleUsers(){
 
 async function getUsers() {
     try {
-        const allUsers = await fetch(URL + 'users', makeOptions("GET"))
+        const allUsers = await fetch(URL, makeOptions("GET"))
             .then(handleHttpErrors)
             .then(users => { return users })
             console.log(allUsers)
