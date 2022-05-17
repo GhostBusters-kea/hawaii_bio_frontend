@@ -6,7 +6,7 @@ export function makeOptions(method, body) {
             "Accept": "application/json"
         }
     }
-    if (body) { //Observe how we can add new fields to an object when needed
+    if (body) {
         opts.body = JSON.stringify(body);
     }
     return opts;
@@ -33,7 +33,7 @@ export function makeOptionsToken(method, body, addToken) {
     if (addToken) {
         opts.headers.Authorization = "Bearer " + sessionStorage.getItem("token")
     }
-    if (body) { //Observe how we can add new fields to an object when needed
+    if (body) {
         opts.body = JSON.stringify(body);
     }
     return opts;
