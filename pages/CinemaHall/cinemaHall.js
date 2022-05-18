@@ -114,6 +114,9 @@ function getBoxed(){
     }
 }
 
+//lav flere isReserved, så is_reserved_c1, is_reserved_c2
+//hent id fra cinemahall der passer med filmen og gør is_Reserved_ + cinemahallid
+//Lav måske foreign keys fra
 /*
 export function helloKitty(){
     console.log("helo")
