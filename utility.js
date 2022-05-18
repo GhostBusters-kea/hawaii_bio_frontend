@@ -120,3 +120,13 @@ export async function handleHttpErrors(res) {
     return res.json()
 }
 
+const clickEvent = new MouseEvent("click", {
+    view: window,
+    bubbles: true,
+    cancelable: true
+});
+
+export function showPage(pageId) {
+    document.getElementById(pageId).dispatchEvent(clickEvent)
+}
+

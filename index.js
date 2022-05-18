@@ -13,6 +13,7 @@ import {getAllPerformancesOnMovie, loadAllPerformances, btnPerformance} from "./
 import {clicked} from "./pages/CinemaHall/cinemaHall.js";
 import {getParams, setupMovieHandlers} from "./pages/movie/movie.js";
 import {logout, setupLoginHandlers, updateLoginDependentComponents} from "./pages/login/login.js"
+import {setupRegisterHandlers} from "./pages/login/register.js";
 
 
 window.addEventListener("load", async () => {
@@ -44,7 +45,7 @@ window.addEventListener("load", async () => {
         .on("/login", () => {
             renderTemplate(templateLogin, "content")
             setupLoginHandlers()
-            //TODO: handle admin login
+
         })
         .on("/logout", () => {
             renderText("Home", "content")
@@ -55,6 +56,7 @@ window.addEventListener("load", async () => {
         })
         .on("/register", () => {
             renderTemplate(templateRegister, "content")
+            setupRegisterHandlers()
         })
         .on("/reservations", (match) => {
             renderTemplate(templateReservations, "content")

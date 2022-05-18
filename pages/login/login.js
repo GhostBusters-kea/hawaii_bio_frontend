@@ -1,5 +1,6 @@
 import { apiRoot } from "../../settings.js"
 import { handleErrors, makeOptionsToken } from "../../fetchUtils.js"
+import {showPage} from "../../utility.js";
 
 
 export function setupLoginHandlers() {
@@ -23,6 +24,8 @@ async function login(evt) {
         const roles = response.roles
         console.log(roles)
         setLoginState(token, roles)
+        showPage("page-myPage")
+
 
     } catch (err) {
         console.log(err)
