@@ -62,7 +62,7 @@ export function loadAllPerformances(movieid){
 
                 for (let i = 0; i < data.length; i++) {
                     let test = document.getElementById("test-performance")
-                    test.setAttribute("href", "#/reservations?id=" + data[i].id)
+                    test.setAttribute("href", "#/ticket?id=" + data[i].id)
                     test.id += i
                 }
             }
