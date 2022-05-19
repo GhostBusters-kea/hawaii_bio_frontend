@@ -1,0 +1,61 @@
+<template>
+
+    <div class="myBox" style="width: 100%; height: 400px; overflow-y: scroll">
+
+
+        <h3>Ticket</h3>
+
+        <table class="table ticket">
+            <thead>
+            <tr id="test">
+                <th></th>
+                <th>Movie Title</th>
+                <th>Hall</th>
+                <th>Date</th>
+                <th>Ticket Type</th>
+                <th>Length</th>
+                <th>Ticket Price</th>
+                <th>Age Limit</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td id="ticket-movie-image"></td>
+                <td id="ticket-movie-title"></td>
+                <td id="hall">1</td>
+                <td id="ticket-date"></td>
+                <td id="ticket-view-type"></td>
+                <td id="ticket-length"></td>
+                <td id="ticket-price"></td>
+                <td id="age-limit"></td>
+            </tr>
+            </tbody>
+            <tbody id="tbl-id-ticket"></tbody>
+        </table>
+
+    </div>
+
+
+
+    <div>
+        <h3>RESERVE TICKET</h3>
+        <label for="quantity">Quantity</label>
+        <input type="number" id="quantity" name="quantity" min="1" max="30">
+        <label for="ticketTypeChoice">Ticket Type</label>
+        <input type="text" id="ticketTypeChoice" name="Ticket Type" placeholder="ADULT/CHILD">
+        <form action="" class="create-ticket-form"><button type="submit" id="create-ticket" class="create">Save Ticket</button></form>
+    </div>
+
+    <br><br><br><br><br>
+    <div>
+
+        <input type="text" id="ticket-id" class="form-control" placeholder="TYPE TICKET ID">
+        <button type="submit" id="view-ticket-btn">Click to view ticket</button>
+
+    </div>
+
+
+
+
+
+</template>

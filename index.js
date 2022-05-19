@@ -8,13 +8,18 @@ import {
     
 } from "./utility.js"
 
-import {setupReservationHandlers, viewTickets} from "./pages/reservation/reservation.js";
+
+
+//import {addHandler} from "./pages/navigate/navigate.js";
+import {setupTicketHandlers} from "./pages/ticket/ticket.js";
+import {setupReservationHandlers} from "./pages/reservation/reservation.js";
 import {getAllPerformancesOnMovie, loadAllPerformances, btnPerformance} from "./pages/performance/performance.js";
-import {clicked} from "./pages/CinemaHall/cinemaHall.js";
+import {clicked} from "./pages/cinemaHall/cinemaHall.js";
 import {getParams, setupMovieHandlers} from "./pages/movie/movie.js";
 import {logout, setupLoginHandlers, updateLoginDependentComponents} from "./pages/login/login.js"
 import {setupRegisterHandlers} from "./pages/login/register.js";
 import { setupAdminHandlers } from "./pages/admin/admin.js";
+
 
 
 window.addEventListener("load", async () => {
@@ -28,6 +33,10 @@ window.addEventListener("load", async () => {
 
     const templatePerformance = await loadTemplate("./pages/performance/performance.html")
     const templateReservations = await loadTemplate("./pages/reservation/reservation.html")
+
+    const templateTicket = await loadTemplate("./pages/ticket/ticket.html")
+
+
     const templateCinemaHall = await loadTemplate("./pages/cinemaHall/cinemaHall.html")
 
     const router = new Navigo("/", { hash: true });
@@ -79,10 +88,19 @@ window.addEventListener("load", async () => {
             btnPerformance()
 
 
+
+        })
+        .on("/ticket", ()=> {
+            renderTemplate(templateTicket, "content")
+            setupTicketHandlers()
+
+
+
         })
         .on("/cinemahall", ()=> {
             renderTemplate(templateCinemaHall, "content")
             clicked()
+
 
         })
 });
