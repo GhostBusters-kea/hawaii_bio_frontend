@@ -94,7 +94,7 @@ window.addEventListener("load", async () => {
         .on("/cinemahall", ()=> {
             renderTemplate(templateCinemaHall, "content")
             clicked()
-            showIfReserved()
+
 
         })
 });
