@@ -96,7 +96,7 @@ function getBoxed(){
             const chValue = chks[i].value = 1
             console.log(chValue)
 
-                fetch("http://localhost:8090/api/seat/" + chId, {
+                fetch(URL + chId, {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json",
@@ -108,6 +108,7 @@ function getBoxed(){
                     })
                 })
                     .then(data => {
+                        console.log(data)
                         chks.checked = true
                     })
         }
