@@ -10,7 +10,7 @@ import {
 
 import {setupReservationHandlers, viewTickets} from "./pages/reservation/reservation.js";
 import {getAllPerformancesOnMovie, loadAllPerformances, btnPerformance} from "./pages/performance/performance.js";
-import {clicked} from "./pages/CinemaHall/cinemaHall.js";
+import {seatsReserved, reserveSeats} from "./pages/cinemaHall/cinemaHall.js";
 import {getParams, setupMovieHandlers} from "./pages/movie/movie.js";
 import {logout, setupLoginHandlers, updateLoginDependentComponents} from "./pages/login/login.js"
 
@@ -74,7 +74,8 @@ window.addEventListener("load", async () => {
         })
         .on("/cinemahall", ()=> {
             renderTemplate(templateCinemaHall, "content")
-            clicked()
+            seatsReserved()
+            reserveSeats()
 
         })
 });
