@@ -2,7 +2,7 @@ import {apiRoot} from "../../settings.js";
 import {handleHttpErrors} from "../../utility.js";
 import{makeOptions} from "../../fetchUtils.js";
 
-const URL = apiRoot;
+const URL = apiRoot + "cinemahall/";
 
 export function clicked(){
     document.getElementById("btn-checkbox").onclick = multipleCheckboxes;
@@ -33,7 +33,7 @@ export function seatsReserved(){
 export function seatsReserved(){
     let array = [];
 
-    fetch(URL + "/api/cinemahall/" + 1)
+    fetch(URL + 1)
         .then(res => handleHttpErrors(res))
         .then(data => {
             console.log(data)
@@ -114,6 +114,9 @@ function getBoxed(){
     }
 }
 
+//lav flere isReserved, så is_reserved_c1, is_reserved_c2
+//hent id fra cinemahall der passer med filmen og gør is_Reserved_ + cinemahallid
+//Lav måske foreign keys fra
 /*
 export function helloKitty(){
     console.log("helo")

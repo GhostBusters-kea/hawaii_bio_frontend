@@ -1,11 +1,16 @@
 import {apiRoot} from "../../settings.js";
 import {handleHttpErrors} from "../../utility.js";
 
-const URL = apiRoot
+const URL = apiRoot + "performance/"
+
+export function btnPerformance(){
+    document.getElementById("performance-btn").onclick = addNewPerformance;
+    document.getElementById("delete-performance-btn").onclick= deletePerformance;
+}
 
 //Der skal bruges et movieid når man vælger en film. Før jeg kan få de rigtige datoer
 export function getAllPerformancesOnMovie(movieid){
-    fetch(URL + "/api/performance/" + movieid)
+    fetch(URL + movieid)
         .then(res => handleHttpErrors(res))
         .then(performances1 => {
             const performanceList = document.getElementById("performanceList")
@@ -37,7 +42,7 @@ export function getAllPerformancesOnMovie(movieid){
 // }
 
 export function loadAllPerformances(movieid){
-    fetch(URL + "/api/performance/" + movieid)
+    fetch(URL + movieid)
         .then(res=>res.json())
         .then(data=>{
             console.log(data)
@@ -65,4 +70,39 @@ export function loadAllPerformances(movieid){
         .catch(err => console.log("Error: " +  err))
         .finally(err => console.log("Done"));
 
+}
+
+function addNewPerformance(){
+    const performanceInput = document.getElementById("date-performance").value
+    let movieInput = document.getElementById("movie-input").value
+    let cinemaInput = document.getElementById("cinema-input").value
+    const value = {id: movieInput}
+    const value1 = {id: cinemaInput}
+    console.log(movieInput)
+    console.log(cinemaInput)
+    console.log(performanceInput)
+    fetch(URL, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            date: performanceInput,
+            movie: value,
+            cinemaHall: value1,
+        })
+    }).then(res => res.json())
+        .then(data => {
+            console.log("hello")
+            console.log(data)
+        })
+}
+
+function deletePerformance() {
+    const performanceInput = document.getElementById("delete-performance-id").value
+
+    fetch(URL + performanceInput, {
+        method: "DELETE"
+    }).then(res => res.json())
+        .then(()=> location.reload())
 }

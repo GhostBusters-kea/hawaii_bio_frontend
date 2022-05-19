@@ -1,5 +1,6 @@
+import {apiRoot} from "../../settings.js";
 
-const URL = "http://localhost:8090/api/movies/"
+const URL = apiRoot + "movies"
 
 export function setupMovieHandlers(){
     loadAllMovies();
