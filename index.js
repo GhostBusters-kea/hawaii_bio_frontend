@@ -8,17 +8,19 @@ import {
     
 } from "./utility.js"
 
-import {setupReservationHandlers, viewTickets} from "./pages/reservation/reservation.js";
+import {setupReservationHandlers} from "./pages/reservation/reservation.js";
 //import {addHandler} from "./pages/navigate/navigate.js";
 import {getAllPerformancesOnMovie, loadAllPerformances} from "./pages/performance/performance.js";
-import {clicked} from "./pages/CinemaHall/cinemaHall.js";
+import {clicked,showIfReserved} from "./pages/CinemaHall/cinemaHall.js";
 import {getParams, setupMovieHandlers} from "./pages/movie/movie.js";
+import {setupTicketHandlers} from "./pages/ticket/ticket.js";
 
 
 window.addEventListener("load", async () => {
     const templateAbout = await loadTemplate("./pages/about/about.html")
     const templatePerformance = await loadTemplate("./pages/performance/performance.html")
     const templateReservations = await loadTemplate("./pages/reservation/reservation.html")
+    const templateTicket = await loadTemplate("./pages/ticket/ticket.html")
 
     const templateCinemaHall = await loadTemplate("./pages/cinemaHall/cinemaHall.html")
     const templateMovie = await loadTemplate("./pages/movie/movie.html")
@@ -56,10 +58,19 @@ window.addEventListener("load", async () => {
             loadAllPerformances(getParams(match))
 
 
+
+        })
+        .on("/ticket", ()=> {
+            renderTemplate(templateTicket, "content")
+            setupTicketHandlers()
+
+
+
         })
         .on("/cinemahall", ()=> {
             renderTemplate(templateCinemaHall, "content")
             clicked()
+            showIfReserved()
 
         })
 });
