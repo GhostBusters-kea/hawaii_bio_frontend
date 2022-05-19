@@ -34,7 +34,7 @@ export function createTicket() {
 
     addPostForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        fetch("http://localhost:8090/api/ticket/", {
+        fetch(URL + "ticket", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -57,7 +57,7 @@ export function createTicket() {
 
                 console.log("ere")
 
-                fetch("http://localhost:8090/api/reservation/", {
+                fetch(URL + "reservation", {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json"

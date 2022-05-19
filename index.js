@@ -9,14 +9,10 @@ import {
 } from "./utility.js"
 
 
-import {setupReservationHandlers} from "./pages/reservation/reservation.js";
-//import {addHandler} from "./pages/navigate/navigate.js";
-import {getAllPerformancesOnMovie, loadAllPerformances} from "./pages/performance/performance.js";
-import {clicked,showIfReserved} from "./pages/CinemaHall/cinemaHall.js";
-import {getParams, setupMovieHandlers} from "./pages/movie/movie.js";
-import {setupTicketHandlers} from "./pages/ticket/ticket.js";
 
-import {setupReservationHandlers, viewTickets} from "./pages/reservation/reservation.js";
+//import {addHandler} from "./pages/navigate/navigate.js";
+import {setupTicketHandlers} from "./pages/ticket/ticket.js";
+import {setupReservationHandlers} from "./pages/reservation/reservation.js";
 import {getAllPerformancesOnMovie, loadAllPerformances, btnPerformance} from "./pages/performance/performance.js";
 import {clicked} from "./pages/CinemaHall/cinemaHall.js";
 import {getParams, setupMovieHandlers} from "./pages/movie/movie.js";

@@ -1,6 +1,6 @@
+import {apiRoot} from "../../settings.js";
 
-
-const URL = "http://localhost:8090/api/reservation"
+const URL = apiRoot
 
 export function setupReservationHandlers(){
     document.getElementById("btn-get-id-reservation").onclick = getReservations;
@@ -57,7 +57,7 @@ export function getReservations(){
 }
 else {
 
-        fetch(URL + "/" + id)
+        fetch(URL + "reservations/" + id)
             .then(res => res.json())
             .then(data => {
                 document.getElementById("reservation-id").innerText = (data.id);
