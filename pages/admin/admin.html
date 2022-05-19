@@ -1,0 +1,52 @@
+<template>
+  <div class="flexbox-container">
+    <div class="flexbox-item">
+      <h1>Manage movies</h1>
+      <hr />
+    </div>
+  </div>
+
+  <div class="flexbox-container">
+    <div class="flexbox-item">
+      <h2>A list of the movies shown in the cinema</h2>
+      <hr />
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Movie Id</th>
+            <th>Movie title</th>
+            <th>Genre</th>
+            <th>Length (min.)</th>
+            <th>Description</th>
+            <th>Age limit</th>
+            <th>Delete movie</th>
+          </tr>
+        </thead>
+        <tbody id="movie-tbl-id" class="movie-tr"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="flexbox-container">
+    <div class="flexbox-item">
+      <h2 id="add-movie">Add new movie</h2>
+      <hr />
+      <form class="add-post-form">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" name="" id="title" />
+        <label for="category">Genre</label>
+        <input type="text" class="form-control" name="" id="category" />
+        <label for="length">Length</label>
+        <input type="text" class="form-control" name="" id="length" />
+        <label for="description">Description</label>
+        <input type="text" class="form-control" name="" id="description" />
+        <label for="age-limit">Age limit</label>
+        <input type="text" class="form-control" name="" id="age-limit" />
+        <hr />
+        <button id="btn-add-movie" type="submit" class="btn btn-primary">
+          Add movie
+        </button>
+      </form>
+    </div>
+  </div>
+</template>

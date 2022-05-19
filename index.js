@@ -18,15 +18,18 @@ import {clicked} from "./pages/cinemaHall/cinemaHall.js";
 import {getParams, setupMovieHandlers} from "./pages/movie/movie.js";
 import {logout, setupLoginHandlers, updateLoginDependentComponents} from "./pages/login/login.js"
 import {setupRegisterHandlers} from "./pages/login/register.js";
+import { setupAdminHandlers } from "./pages/admin/admin.js";
 
 
 
 window.addEventListener("load", async () => {
+    const templateHome = await loadTemplate("./pages/home/home.html")
     const templateAbout = await loadTemplate("./pages/about/about.html")
     const templateMovie = await loadTemplate("./pages/movie/movie.html")
     const templateMyPage = await loadTemplate("./pages/myPage/myPage.html")
     const templateLogin = await loadTemplate("./pages/login/login.html")
     const templateRegister = await loadTemplate("./pages/login/register.html")
+    const templateAdmin = await loadTemplate("./pages/admin/admin.html")
 
     const templatePerformance = await loadTemplate("./pages/performance/performance.html")
     const templateReservations = await loadTemplate("./pages/reservation/reservation.html")
@@ -44,8 +47,11 @@ window.addEventListener("load", async () => {
                 done()
             }
         })
-        .on("/", () => renderText("Home", "content"))
+        .on("/", () => renderTemplate(templateHome, "content"))
         .on("/about", () => renderTemplate(templateAbout, "content"))
+        .on("/admin", () => {
+            renderTemplate(templateAdmin, "content")
+            setupAdminHandlers()})
         .on( "/movies", () => {
             renderTemplate(templateMovie, "content")
             setupMovieHandlers()

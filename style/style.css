@@ -107,17 +107,20 @@ input[type=checkbox]:checked:before {
 
 .flexbox-container{
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  align-content: center;
+  align-content: space-between;
+  
+  
+  
   
 }
 
 .flexbox-item {
-  
 
   margin: 10px;
   padding: 30px;
+  
   
 
 }
