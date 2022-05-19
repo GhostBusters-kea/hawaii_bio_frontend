@@ -11,10 +11,9 @@ import {
 
 
 //import {addHandler} from "./pages/navigate/navigate.js";
-import {setupTicketHandlers} from "./pages/ticket/ticket.js";
+import {setupTicketHandlers, reserveSeats, seatsReserved} from "./pages/ticket/ticket.js";
 import {setupReservationHandlers} from "./pages/reservation/reservation.js";
 import {getAllPerformancesOnMovie, loadAllPerformances, btnPerformance} from "./pages/performance/performance.js";
-import {seatsReserved, reserveSeats} from "./pages/cinemaHall/cinemaHall.js";
 import {getParams, setupMovieHandlers} from "./pages/movie/movie.js";
 import {logout, setupLoginHandlers, updateLoginDependentComponents} from "./pages/login/login.js"
 import {setupRegisterHandlers} from "./pages/login/register.js";
@@ -73,7 +72,7 @@ window.addEventListener("load", async () => {
             renderTemplate(templateRegister, "content")
             setupRegisterHandlers()
         })
-        .on("/reservations", (match) => {
+        .on("/reservation", (match) => {
             renderTemplate(templateReservations, "content")
 
             if (match){
@@ -90,9 +89,12 @@ window.addEventListener("load", async () => {
 
 
         })
-        .on("/ticket", ()=> {
+        .on("/ticket", (match)=> {
             renderTemplate(templateTicket, "content")
             setupTicketHandlers()
+            seatsReserved(getParams(match))
+            reserveSeats(getParams(match))
+
 
 
 
