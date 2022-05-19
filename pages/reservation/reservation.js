@@ -7,7 +7,6 @@ export function setupReservationHandlers(){
     document.getElementById("delete-reservation-btn").onclick = delete2;
     // document.getElementById("view-ticket-btn").onclick = viewTickets;
     // document.getElementById("create-ticket").onclick = createTicket;
-    document.getElementById("update-reservation-btn").onclick = updateReservation;
 
 }
 
@@ -22,7 +21,6 @@ export function getReservations(){
     document.getElementById("reservation-cinema-hall").innerHTML = "";
     document.getElementById("reservation-dateOfPerformance").innerHTML = "";
     document.getElementById("reservation-ageLimit").innerHTML = "";
-    document.getElementById("reservation-amountOfTickets").innerHTML = "";
     document.getElementById("reservation-totalPrice").innerHTML = "";
 
     const id = document.getElementById("input-reservation-id").value;
@@ -31,22 +29,18 @@ export function getReservations(){
 
     if (id === ""){
 
-    fetch(URL)
+    fetch(URL + "reservation/" + id)
         .then(res => res.json())
         .then(data => {
+            console.log(data)
             const rows = data.map(u=>
                 `
         <tr>
             <td>${u.id}</td>
             <td>${u.reservationDate}</td>
-            <td>${u.ticketResponse.performance.movie.title}</td>
-            <td>1</td>
-            <td>${u.ticketResponse.performance.date}</td>
-            <td>${u.ticketResponse.performance.movie.ageLimit}</td>
-            <td>${u.ticketResponse.amountOfTickets}</td>
-            <td>${u.ticketResponse.ticketPrice}</td>
             
-        </tr>    
+           
+        </tr>
         `).join("\n")
             document.getElementById("tbl-id-reservation").innerHTML=rows;
 
@@ -57,19 +51,19 @@ export function getReservations(){
 }
 else {
 
-        fetch(URL + "reservations/" + id)
+        fetch(URL + "reservation/" + id)
             .then(res => res.json())
             .then(data => {
                 document.getElementById("reservation-id").innerText = (data.id);
                 document.getElementById("reservation-created").innerHTML = (data.reservationDate);
-                document.getElementById("reservation-movie").innerHTML = (data.ticketResponse.performance.movie.title);
+                /*
+                document.getElementById("reservation-movie").innerHTML = (data.tickets.performance.movie.title);
                 document.getElementById("reservation-cinema-hall").innerHTML = "1";
-                document.getElementById("reservation-dateOfPerformance").innerHTML = (data.ticketResponse.performance.date);
-                document.getElementById("reservation-ageLimit").innerHTML = (data.ticketResponse.performance.movie.ageLimit);
-                document.getElementById("reservation-amountOfTickets").innerHTML = (data.ticketResponse.amountOfTickets);
-                document.getElementById("reservation-totalPrice").innerHTML = (data.ticketResponse.ticketPrice);
-                let btn = document.getElementById("update-reservation-btn");
-                btn.style.display = "block";
+                document.getElementById("reservation-dateOfPerformance").innerHTML = (data.tickets.performance.date);
+                document.getElementById("reservation-ageLimit").innerHTML = (data.tickets.performance.movie.ageLimit);
+                document.getElementById("reservation-totalPrice").innerHTML = (data.tickets.ticketPrice);
+
+                 */
                 let deleteBtn = document.getElementById("delete-reservation-btn");
                 deleteBtn.style.display = "block";
             })
@@ -84,7 +78,7 @@ else {
 function delete2 () {
     try {
         let id = document.getElementById("input-reservation-id").value
-        fetch(URL + "/" + id, {
+        fetch(URL + "reservation/" + id, {
             method: "DELETE",
         })
             .then(() => location.reload())
