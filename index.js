@@ -14,7 +14,7 @@ import {
 import {setupTicketHandlers} from "./pages/ticket/ticket.js";
 import {setupReservationHandlers} from "./pages/reservation/reservation.js";
 import {getAllPerformancesOnMovie, loadAllPerformances, btnPerformance} from "./pages/performance/performance.js";
-import {clicked} from "./pages/CinemaHall/cinemaHall.js";
+import {clicked} from "./pages/cinemaHall/cinemaHall.js";
 import {getParams, setupMovieHandlers} from "./pages/movie/movie.js";
 import {logout, setupLoginHandlers, updateLoginDependentComponents} from "./pages/login/login.js"
 import {setupRegisterHandlers} from "./pages/login/register.js";
