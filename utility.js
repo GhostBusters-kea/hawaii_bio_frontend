@@ -129,4 +129,3 @@ const clickEvent = new MouseEvent("click", {
 export function showPage(pageId) {
     document.getElementById(pageId).dispatchEvent(clickEvent)
 }
-

@@ -84,13 +84,15 @@ function addNewPerformance(){
     fetch(URL, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + sessionStorage.getItem("token")
         },
         body: JSON.stringify({
             date: performanceInput,
             movie: value,
             cinemaHall: value1,
         })
+
     }).then(res => res.json())
         .then(data => {
             console.log("hello")

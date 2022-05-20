@@ -105,17 +105,19 @@ export function reserveSeats(performanceid){
         let chks = tblSeat.getElementsByTagName("INPUT")
 
         const time = new Date("2022-01-10 00:00:00.000000")
-        const userId = "1"
+        // const userId = "1"
 
 
         fetch(URL + "reservation", {
             method: "POST",
             headers: {
-                "Content-type": "application/json"
+                "Content-type": "application/json",
+                "Accept": "application/json",
+                "Authorization": "Bearer " + sessionStorage.getItem("token")
             },
             body: JSON.stringify({
                 reservationDate: time,
-                user: userId,
+                user: sessionStorage.getItem("username")
             })
         })
             .then(res=> res.json())
@@ -142,7 +144,8 @@ export function reserveSeats(performanceid){
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        "Accept": "application/json"
+                        "Accept": "application/json",
+                        "Authorization": "Bearer " + sessionStorage.getItem("token")
                     },
                     body: JSON.stringify({
                         performance: valuePerformance,
@@ -154,13 +157,15 @@ export function reserveSeats(performanceid){
                             fetch(URL + "ticket/", {
                                 method: "POST",
                                 headers: {
-                                    "Content-Type": "application/json"
+                                    "Content-Type": "application/json",
+                                    "Accept": "application/json",
+                                    "Authorization": "Bearer " + sessionStorage.getItem("token")
                                 },
                                 body: JSON.stringify({
                                     ticketPrice: ticketPriceValue,
                                     performance: valuePerformance,
                                     seatname: chId,
-                                    reservation: reservationId
+                                    reservation: reservationId,
                                 })
                             })
                         })

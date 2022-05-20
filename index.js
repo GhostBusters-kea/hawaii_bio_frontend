@@ -26,6 +26,7 @@ window.addEventListener("load", async () => {
     const templateAbout = await loadTemplate("./pages/about/about.html")
     const templateMovie = await loadTemplate("./pages/movie/movie.html")
     const templateMyPage = await loadTemplate("./pages/myPage/myPage.html")
+    const templateMyAdminPage = await loadTemplate("./pages/myPage/myAdminPage.html")
     const templateLogin = await loadTemplate("./pages/login/login.html")
     const templateRegister = await loadTemplate("./pages/login/register.html")
     const templateAdmin = await loadTemplate("./pages/admin/admin.html")
@@ -60,13 +61,21 @@ window.addEventListener("load", async () => {
             renderTemplate(templateLogin, "content")
             setupLoginHandlers()
 
+
         })
         .on("/logout", () => {
             renderText("Home", "content")
             logout()
         })
         .on("/myPage", () => {
-            renderTemplate(templateMyPage, "content")
+            const role = sessionStorage.getItem("role")
+            if (role === "USER"){
+                renderTemplate(templateMyPage, "content")
+            } else if (role === "ADMIN"){
+                renderTemplate(templateMyAdminPage, "content")
+            } else {
+                renderTemplate(templateLogin, "content")
+            }
         })
         .on("/register", () => {
             renderTemplate(templateRegister, "content")

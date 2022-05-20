@@ -5,6 +5,7 @@ import {showPage} from "../../utility.js";
 
 export function setupLoginHandlers() {
     document.getElementById("submit-login").onclick = login
+
     // document.getElementById("log-out-btn").onclick = logout
 }
 
@@ -14,7 +15,9 @@ async function login(evt) {
     const credentials = {}
     credentials.username = document.getElementById("username").value
     credentials.password = document.getElementById("password").value
-    const options = makeOptionsToken("POST", credentials, true)
+
+    const username = document.getElementById("username").value
+    const options = makeOptionsToken("POST", credentials, false)
     try {
         const response = await fetch(apiRoot + "auth/login", options)
             .then(res => handleErrors(res))
@@ -24,8 +27,8 @@ async function login(evt) {
         const roles = response.roles
         console.log(roles)
         setLoginState(token, roles)
-        showPage("page-myPage")
 
+        sessionStorage.setItem("user_id", username)
 
     } catch (err) {
         console.log(err)
@@ -65,4 +68,7 @@ export function updateLoginDependentComponents() {
     document.getElementById("login").style.display = loggedIn ? "none" : "block"
     document.getElementById("logout").style.display = loggedIn ? "block" : "none"
     document.getElementById("register").style.display = loggedIn ? "none" : "block"
+    document.getElementById("reservation").style.display = loggedIn ? "block" : "none"
+    document.getElementById("reservation").style.display = loggedIn ? "block" : "none"
+
 }

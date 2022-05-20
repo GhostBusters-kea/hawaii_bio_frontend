@@ -1,11 +1,67 @@
 import {apiRoot} from "../../settings.js";
+import {handleErrors, makeOptionsToken} from "../../fetchUtils.js";
+import {handleHttpErrors} from "../../utility.js";
+
 
 const URL = apiRoot + "movies"
 
 export function setupMovieHandlers(){
     loadAllMovies();
-   
+    if (sessionStorage.getItem("role") === "ADMIN") {
+        addMovieHtml()
+        addMovie()
+    }
 }
+
+function addMovieHtml(){
+    document.getElementById("add-movie-html").innerHTML = "<div class=\"flexbox-item\">\n" +
+        "      <form id=\"form-add-movie\" method=\"post\">\n" +
+        "        <div class=\"form-group\">\n" +
+        "          <label for=\"new-title\">Title</label>\n" +
+        "          <input type=\"text\" class=\"form-control\" id=\"new-title\">\n" +
+        "        </div>\n" +
+        "        <div class=\"form-group\">\n" +
+        "          <label for=\"new-category\">Category</label>\n" +
+        "          <input type=\"text\" class=\"form-control\" id=\"new-category\">\n" +
+        "        </div>\n" +
+        "        <div class=\"form-group\">\n" +
+        "          <label for=\"new-length\">Length</label>\n" +
+        "          <input type=\"number\" class=\"form-control\" id=\"new-length\" placeholder=\"Length in full minutes\">\n" +
+        "        </div>\n" +
+        "        <div class=\"form-group\">\n" +
+        "          <label for=\"new-age\">Age Limit</label>\n" +
+        "          <input type=\"number\" class=\"form-control\" id=\"new-age\">\n" +
+        "        </div>\n" +
+        "        <div class=\"form-group\">\n" +
+        "          <label for=\"new-description\">Description</label>\n" +
+        "          <input type=\"text\" class=\"form-control\" id=\"new-description\">\n" +
+        "        </div>\n" +
+        "\n" +
+        "        <button type=\"submit\" class=\"btn btn-primary\">Submit</button>\n" +
+        "      </form>\n" +
+        "    </div>"
+}
+
+async function addMovie(){
+
+    const newMovieDetails = {}
+    newMovieDetails.title = document.getElementById("new-title").value
+    newMovieDetails.category = document.getElementById("new-category").value
+    newMovieDetails.length = document.getElementById("new-length").value
+    newMovieDetails.ageLimit = document.getElementById("new-age").value
+    newMovieDetails.description = document.getElementById("new-description").value
+
+    const options = makeOptionsToken("POST", newMovieDetails, true)
+    try{
+        const response = await fetch(URL, options)
+            .then(res => handleHttpErrors(res))
+
+    } catch (err) {
+        console.log(err)
+        // document.getElementById("error").innerText = err.message + " - Try again"
+    }
+}
+
 
 function loadAllMovies(){
     fetch(URL)
